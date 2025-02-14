@@ -4,11 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>R-engg</title>
+
+    <!-- Remix icon -->
     <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/10026/10026377.png">
 
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 
+    <!-- Google icon -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+
+    <!-- Google -->
 </head>
 
 <body>
@@ -50,9 +57,9 @@
                     </svg>
                     <!-- <span class="user-name">Pratham</span> -->
                 </div>
-
-
-
+            </div>
+            <div class="machine-status">
+                <h3>Machine Status: <span>Offline</span></h3>
             </div>
             </div>
         </nav>
@@ -77,30 +84,74 @@
         </svg>
     </div>
 
+    <div class="st1-wrapper">
+        <div class="head">
+          Tray Loading Camera
+          <button class="st1-close-btn">
+            <span class="material-symbols-outlined"> close </span>
+          </button>
+        </div>
+        <div class="st1-content">
+          <div class="image-box">Input Image</div>
+          <div class="cam-status">
+            <div class="cam-results">
+              <div class="defects">
+                <h3>Defects</h3>
+                <input
+                  type="text"
+                  class="defect-in"
+                  value="cap missing"
+                  readonly=""
+                />
+              </div>
+              <div class="counts">
+                <h3>Count</h3>
+                <input type="text" class="count-in" value="4" readonly="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     <main class="container1">
         <div class="col-1">
-            <div class="ui-box">
-                <h3>Part Selection</h3>
-                <div id="part-selection">
-                    <label class="ui-label" for="part-name">Part Name:</label>
-                    <select class="ui-select" id="part-name">
-                        <option selected>-Select-</option>
-                        <option value="435155">435155</option>
-                    </select>
-
-                    <button class="start-btn">Start</button>
-                </div>
-                <div id="sub-part-selection">
-                    <label class="ui-label" for="sub-part-name">Sub-Part Name:</label>
-                    <select class="ui-select" id="sub-part-name">
-                        <option selected>-Select-</option>
-                        <option value="456565">456565</option>
-                        <!-- Add options here -->
-                    </select>
-                    <button class="stop-btn">Stop</button>
+            <div class="ui-box" id="part-box">
+                <h3>Relay Selection</h3>
+                <div class="relay">
+                    <div id="relay-selection">
+                        <label class="ui-label" for="part-name">Relay type:</label>
+                        <select class="ui-select" id="part-name">
+                            <option selected>-Select-</option>
+                            <option value="12V NO">12V NO</option>
+                            <option value="12V NO with diode">12V NO with diode</option>
+                            <option value="12V CO">12V CO</option>
+                            <option value="24V NO">24V NO</option>
+                            <option value="24V with diode">24V with diode</option>
+                            <option value="24V CO">24V CO</option>
+                        </select>
+                        <button class="start-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20"
+                                height="20" fill="rgba(255,255,255,1)">
+                                <path
+                                    d="M16.3944 12.0001L10 7.7371V16.263L16.3944 12.0001ZM19.376 12.4161L8.77735 19.4818C8.54759 19.635 8.23715 19.5729 8.08397 19.3432C8.02922 19.261 8 19.1645 8 19.0658V4.93433C8 4.65818 8.22386 4.43433 8.5 4.43433C8.59871 4.43433 8.69522 4.46355 8.77735 4.5183L19.376 11.584C19.6057 11.7372 19.6678 12.0477 19.5146 12.2774C19.478 12.3323 19.4309 12.3795 19.376 12.4161Z">
+                                </path>
+                            </svg>Start</button>
+                    </div>
+                    <div id="relay-selection">
+                        <label class="ui-label" for="part-name">Total Relays:</label>
+                        <select class="ui-select" id="part-name">
+                            <option selected>42</option>
+                        </select>
+                        <button class="stop-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20"
+                                height="20" fill="rgba(255,255,255,1)">
+                                <path
+                                    d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM9 9H15V15H9V9Z">
+                                </path>
+                            </svg>Stop</button>
+                    </div>
                 </div>
             </div>
-            <div class="ui-box" id="detection-counter">
+
+            <div class="ui-box" id="detection-counter-box">
                 <h3>Detection Counter</h3>
                 <div class="detection-item">
                     <div class="dc-result"><label style="color: green;">Ok</label><input type="text" class="detect-in"
@@ -111,110 +162,73 @@
                     <div class="dc-result">
                         <label>Total</label><input type="text" class="detect-in" readonly="">
                     </div>
+                </div>
+            </div>
+            <div class="ui-box" id="status-box">
+                <h3>Camera Status</h3>
+                <div class="status-item">
+                    <div class="cam-status">
+                        <h4 style="width: 100px;">Tray loading camera</h4>
+                        <div class="circle"></div>
+                    </div>
+                    <div class="cam-status">
+                        <h4 style="width: 101px;">Rejection tray camera</h4>
+                        <div class="circle"></div>
+                    </div>
+                    <div class="cam-status">
+                        <h4>Armature camera</h4>
+                        <div class="circle"></div>
+                    </div>
+                    <div class="cam-status">
+                        <h4>Weilding camera</h4>
+                        <div class="circle"></div>
+                    </div>
+                    <div class="cam-status">
+                        <h4>Cap camera</h4>
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
 
+
+        <div class="stations">
+            <div class="station-1">
+                <div class="st-head">
+                    <h3>Station 1</h3>
+                    <div class="st1-cam-open">
+                        <button class="st1-open-btn">
+                            <span class="material-symbols-outlined">
+                                photo_camera
+                            </span>
+                        </button>
+                    </div>
                 </div>
 
             </div>
+            <div class="station-2">
+                <div class="st-head">
+                    <h3>Station 2</h3>
+                    <div class="st1-cam-open">
+                        <span class="material-symbols-outlined">
+                            photo_camera
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="station-3">
+                <div class="st-head">
+                    <h3>Station 3</h3>
+                    <div class="st1-cam-open">
+                        <span class="material-symbols-outlined">
+                            photo_camera
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="vision">
-            <h1>Vision Viewer</h1>
-            <div class="cam">
-                <div class="cam-box">
-                    <h3>Camera-1</h3>
-                    <div class="image-box">Input Image</div>
-                    <div class="cam-results">
-                        <div class="status">
-                            <h3>Status</h3>
-                            <div class="circle"></div>
-                        </div>
-                        <div class="defects">
-                            <h3>Defects</h3>
-                            <input type="text" class="defect-in" value="cap missing"  readonly>
-                        </div>
-                        <div class="counts">
-                            <h3>Count</h3>
-                            <input type="text" class="count-in" value="4"  readonly>
-                        </div>
-                    </div>
-                </div>
-                <div class="cam-box">
-                <h3>Camera-2</h3>
-                <div class="image-box">Input Image</div>
-                <div class="cam-results">
-                    <div class="status">
-                        <h3>Status</h3>
-                        <div class="circle"></div>
-                    </div>
-                    <div class="defects">
-                        <h3>Defects</h3>
-                        <input type="text" class="defect-in" value="cap missing"  readonly>
-                    </div>
-                    <div class="counts">
-                        <h3>Count</h3>
-                        <input type="text" class="count-in" value="4"  readonly>
-                    </div>
-                </div>
-            </div>
-            <div class="cam-box">
-                <h3>Camera-3</h3>
-                <div class="image-box">Input Image</div>
-                <div class="cam-results">
-                    <div class="status">
-                        <h3>Status</h3>
-                        <div class="circle"></div>
-                    </div>
-                    <div class="defects">
-                        <h3>Defects</h3>
-                        <input type="text" class="defect-in" value="cap missing"  readonly>
-                    </div>
-                    <div class="counts">
-                        <h3>Count</h3>
-                        <input type="text" class="count-in" value="4"  readonly>
-                    </div>
-                </div>
-            </div>
-            <div class="cam-box">
-                <h3>Camera-4</h3>
-                <div class="image-box">Input Image</div>
-                <div class="cam-results">
-                    <div class="status">
-                        <h3>Status</h3>
-                        <div class="circle"></div>
-                    </div>
-                    <div class="defects">
-                        <h3>Defects</h3>
-                        <input type="text" class="defect-in" value="cap missing"  readonly>
-                    </div>
-                    <div class="counts">
-                        <h3>Count</h3>
-                        <input type="text" class="count-in" value="4"  readonly>
-                    </div>
-                </div>
-            </div>
-            </div>
-            
-        </div>
-        </div>
-        <div class="test-results">
-            <h3>Test-Results</h3>
-            <div class="indexes">
-               <div class="index-1">
-                  <fieldset class="fs">
-                     <legend>Index-1</legend>
-                  </fieldset>
-               </div>
-               <div class="index-2">
-                  <fieldset class="fs">
-                     <legend>Index-2</legend>
-                  </fieldset>
-               </div>
-               <div class="index-3">
-                <fieldset class="fs">
-                   <legend >Index-3</legend>
-                </fieldset>
-             </div>
-            </div>
-         </div>
+
     </main>
 
 
