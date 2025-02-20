@@ -614,17 +614,19 @@ main {
 
 
 
-/* Image dragger */
+/* Div dragger */
+
+/* For st1 */
 
 .st1-wrapper {
   position: absolute;
-  top: 50%;
+  width: calc(100% - 40px); /* Adds 20px space on left & right */
+  height: 70vh;
+  bottom: 20px; /* Adds 20px space from bottom */
   left: 50%;
-  max-width: 450px;
-  width: 100%;
+  transform: translateX(-50%) scale(0.8); /* Center horizontally & scale */
   background: #fff;
   border-radius: 10px;
-  transform: translate(-50%, -50%) scale(0.8);
   box-shadow: 1px 3px 12px 5px rgba(0, 0, 0, 0.1);
   opacity: 0;
   transition: transform 0.3s ease, opacity 0.3s ease;
@@ -633,11 +635,12 @@ main {
 
 .st1-wrapper.show {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translateX(-50%) scale(1);
   pointer-events: all;
 }
 
-.st1-wrapper .head {
+
+.st1-wrapper .head-st1 {
   color: hsl(230, 12%, 40%);
   font-size: 1.3rem;
   font-weight: 500;
@@ -657,29 +660,6 @@ main {
   font-weight: bold;
 }
 
-.st1-content {
-  display: flex;
-  padding: 30px;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.st1-content .st1-icon {
-  height: 95px;
-  width: 95px;
-  border-radius: 50%;
-  border: 5px solid #6f36ff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.st1-content .st1-icon i {
-  color: #6f36ff;
-  font-size: 60px;
-}
-
 .st1-open-btn {
   background: white;
   border: none;
@@ -688,67 +668,62 @@ main {
   color: hsl(230, 12%, 40%);
 }
 
-.image-box {
-  width: 25rem;
-  height: 20rem;
-  border: 2px dashed #0078d4;
+
+/* For st2 */
+
+.st2-wrapper {
+  position: absolute;
+  width: calc(100% - 40px); /* Adds 20px space on left & right */
+  height: 90vh;
+  bottom: 20px; /* Adds 20px space from bottom */
+  left: 50%;
+  transform: translateX(-50%) scale(0.8); /* Center horizontally & scale */
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 1px 3px 12px 5px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.st2-wrapper.show {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+  pointer-events: all;
+}
+
+
+.st2-wrapper .head-st2 {
+  color: hsl(230, 12%, 40%);
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding: 17px 30px;
+  border-bottom: 1px solid #ccc;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  color: #0078d4;
-  text-align: center;
-  margin-bottom: .5rem;
+  cursor: grab;
 }
 
-.cam-results {
-  color: hsl(230, 12%, 40%);
-  display: flex;
-  justify-content: space-around;
-}
-
-.defects,
-.counts {
-  color: hsl(230, 12%, 40%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.2rem;
-}
-
-.defects h3 {
-  font-family: "Syne", sans-serif;
-  color: hsl(230, 12%, 40%);
-  width: fit-content;
-  font-size: 1.2rem;
-}
-
-.counts h3 {
-  font-family: "Syne", sans-serif;
-  color: hsl(230, 12%, 40%);
-  width: fit-content;
-  font-size: 1.2rem;
-}
-
-.defect-in,
-.count-in {
-  outline: none;
-  width: 100%;
+.st2-close-btn {
+  cursor: pointer;
+  font-size: 20px;
+  background: none;
   border: none;
-  border-radius: 3px;
-  height: 25px;
-  text-align: center;
-  font-family: "Syne", sans-serif;
-  color: hsl(230, 12%, 40%);
-  font-size: 1rem;
+  font-weight: bold;
 }
 
-.cam-results {
+.st2-open-btn {
+  background: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
   color: hsl(230, 12%, 40%);
-  display: flex;
-  justify-content: space-around;
-  padding: 8px;
-  column-gap: 0.2rem;
 }
+
+
+
+
 
 @media screen and (max-width: 1124px) {
   nav.nav.container {
