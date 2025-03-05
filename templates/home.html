@@ -15,8 +15,6 @@
     <!-- Google icon -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 
-
-    <!-- Google -->
 </head>
 
 <body>
@@ -85,7 +83,7 @@
         </svg>
     </div>
 
-    <div class="st1-wrapper">
+    <!-- <div class="st1-wrapper">
         <div class="head-st1">
             Station 1
             <button class="st1-close-btn">
@@ -101,7 +99,7 @@
                 <span class="material-symbols-outlined"> close </span>
             </button>
         </div>
-    </div>
+    </div> -->
 
     <main class="container1">
         <div class="col-1">
@@ -144,13 +142,14 @@
             <div class="ui-box" id="detection-counter-box">
                 <h3>Detection Counter</h3>
                 <div class="detection-item">
-                    <div class="dc-result"><label style="color: green;">Ok</label><input type="text" class="detect-in"
-                            readonly=""></div>
+                    <div class="dc-result"><label style="color: green;">Ok</label><input type="text" value="12"
+                            class="detect-in" readonly=""></div>
                     <div class="dc-result">
-                        <label style="color: red;">NOk</label><input type="text" class="detect-in" readonly="">
+                        <label style="color: red;">NOk</label><input type="text" class="detect-in" value="12"
+                            readonly="">
                     </div>
                     <div class="dc-result">
-                        <label>Total</label><input type="text" class="detect-in" readonly="">
+                        <label>Total</label><input type="text" class="detect-in" value="12" readonly="">
                     </div>
                 </div>
             </div>
@@ -184,48 +183,171 @@
 
 
         <div class="stations">
-            <div class="station-1">
-                <div class="st-head">
-                    <h3>Station 1</h3>
-                    <div class="st1-cam-open">
-                        <button class="st1-open-btn">
-                            <span class="material-symbols-outlined">
-                                photo_camera
-                            </span>
-                        </button>
+            <div class="stn-sections">
+                <div class="tab">
+                    <button class="tablinks reveal-an" onclick="openTab(event, 'stn-1')">
+                        Station <span>1</span>
+                    </button>
+
+                    <button class="tablinks reveal-an" onclick="openTab(event, 'stn-2')">
+                        Station <span>2</span>
+                    </button>
+
+                    <button class="tablinks reveal-an" onclick="openTab(event, 'stn-3')">
+                        Station <span>3</span>
+                    </button>
+                </div>
+
+                <div id="stn-1" class="tabcontent active">
+                    <div class="st1-row-1">
+                        <div class="st1-tray-status">
+                            <h3>Tray Status</h3>
+                            <div class="st1-tray-status-circle"></div>
+                        </div>
+                        <div class="st1-current-tray-status">
+                            <h3>Tray Information</h3>
+                            <div class="labels-inputs">
+                                <div class="tray-remain">
+                                    <label class="st1-label">Trays Remaining: </label>
+                                    <input class="st1-input" value="12" type="text" readonly="">
+                                </div>
+                                <div class="tray-count">
+                                    <label class="st1-label">Total Count: </label>
+                                    <input class="st1-input" value="12" type="text" readonly="">
+                                </div>
+                                <div class="current-tray">
+                                    <label class="st1-label">Current Tray: </label>
+                                    <input class="st1-input" value="12" type="text" readonly="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stn1-pickup-drop-voltage">
+                            <h3>Pickup & Drop Voltage Status</h3>
+                            <div id="voltage">
+                                <div class="current-status">
+                                    <h3>Tested Value</h3>
+                                    <div class="pickup-voltage">
+                                        <label class="st1-label">Pickup Voltage: </label>
+                                        <input class="st1-input" value="12" type="text" readonly="">
+                                    </div>
+                                    <div class="drop-voltage">
+                                        <label class="st1-label">Drop Voltage: </label>
+                                        <input class="st1-input" value="12" type="text" readonly="">
+                                    </div>
+                                </div>
+                                <div class="ideal-status">
+                                    <h3>Ideal Value</h3>
+                                    <div class="pickup-voltage">
+                                        <label class="st1-label">Pickup Voltage: </label>
+                                        <input class="st1-input" value="12" type="text" readonly="">
+                                    </div>
+                                    <div class="drop-voltage">
+                                        <label class="st1-label">Drop Voltage: </label>
+                                        <input class="st1-input" value="12" type="text" readonly="">
+                                    </div>
+                                </div>
+                                <div class="result">
+                                    <h3>Result</h3>
+                                    <div class="pickup-drop-circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="st1-row-2">
+                        <div class="st1-relay-status">
+                            <h3>Relay Status</h3>
+                            <div class="st1-relay-status-circle"></div>
+                        </div>
+                        <div class="st1-current-relay-status">
+                            <h3>Relay Information</h3>
+                            <div class="labels-inputs">
+                                <div class="relay-remain">
+                                    <label class="st1-label">Relay Remaining: </label>
+                                    <input class="st1-input" value="12" type="text" readonly="">
+                                </div>
+                                <div class="current-relay">
+                                    <label class="st1-label">Current Relay: </label>
+                                    <input class="st1-input" value="12" type="text" readonly="">
+                                </div>
+                                <div class="next-relay">
+                                    <label class="st1-label">Next Relay: </label>
+                                    <input class="st1-input" value="12" type="text" readonly="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stn1-pickup-drop-time">
+                            <h3>Pickup & Drop Time Status</h3>
+                            <div id="time">
+                                <div class="current-status">
+                                    <h3>Tested Value</h3>
+                                    <div class="pickup-time">
+                                        <label class="st1-label">Pickup Time: </label>
+                                        <input class="st1-input" value="12" type="text" readonly="">
+                                    </div>
+                                    <div class="drop-time">
+                                        <label class="st1-label">Drop Time: </label>
+                                        <input class="st1-input" value="12" type="text" readonly="">
+                                    </div>
+                                </div>
+                                <div class="ideal-status">
+                                    <h3>Ideal Value</h3>
+                                    <div class="pickup-time">
+                                        <label class="st1-label">Pickup Time: </label>
+                                        <input class="st1-input" value="12" type="text" readonly="">
+                                    </div>
+                                    <div class="drop-voltage">
+                                        <label class="st1-label">Drop Time: </label>
+                                        <input class="st1-input" value="12" type="text" readonly="">
+                                    </div>
+                                </div>
+                                <div class="result">
+                                    <h3>Result</h3>
+                                    <div class="pickup-drop-circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="st1-row-3">
+                        <h3>Progress Bar</h3>
                     </div>
                 </div>
 
-            </div>
-            <div class="station-2">
-                <div class="st-head">
-                    <h3>Station 2</h3>
-                    <div class="st2-cam-open">
-                        <button class="st2-open-btn">
-                            <span class="material-symbols-outlined">
-                                photo_camera
-                            </span>
-                        </button>
-                    </div>
+                <div id="stn-2" class="tabcontent">
+                    Station 2 Content
+                </div>
+
+                <div id="stn-3" class="tabcontent">
+                    Station 3 Content
                 </div>
             </div>
-            <div class="station-3">
-                <div class="st-head">
-                    <h3>Station 3</h3>
-                    <div class="st3-cam-open">
-                        <span class="material-symbols-outlined">
-                            photo_camera
-                        </span>
+            <div class="current-report">
+                <div class="overall-stat">
+                    <h3>Overall Status</h3>
+                    <div class="stats">
+                        <div class="no-trays"><label class="over-stat-label">Number of trays: </label><input
+                                class="overall-in" type="text" value="12" readonly=""></div>
+                        <div class="no-relays"><label class="over-stat-label">Number of Relays: </label><input
+                                class="overall-in" type="text" value="12" readonly=""></div>
+                        <div class="no-oks"><label class="over-stat-label">Number of Ok: </label><input
+                                class="overall-in" type="text" value="12" readonly=""></div>
+                        <div class="no-Noks"><label class="over-stat-label">Number of NOk: </label><input
+                                class="overall-in" type="text" value="12" readonly=""></div>
+                        <div class="no-totals"><label class="over-stat-label">Total Relays: </label><input
+                                class="overall-in" type="text" value="12" readonly=""></div>
                     </div>
                 </div>
+                <div class="error-stat">
+                    <h3>Defect Details</h3>
+                </div>
             </div>
+
         </div>
 
     </main>
 
 
-
-    <script src="../static/js/main.js"></script>
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 
 </html>

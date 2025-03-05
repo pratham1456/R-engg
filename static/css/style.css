@@ -299,7 +299,6 @@ ul.nav__list {
 
 main {
   flex-grow: 1;
-  /* Takes up the remaining space */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -310,7 +309,7 @@ main {
 .col-1 {
   display: flex;
   column-gap: 1rem;
-  width: 95%;
+  width: 98%;
   margin: 0 auto;
   margin-top: 1rem;
 }
@@ -333,6 +332,10 @@ main {
   font-size: 1.2rem;
 }
 
+div#status-box {
+  display: flex;
+  flex-direction: column;
+}
 
 #status-box {
   width: 50%;
@@ -343,6 +346,7 @@ main {
 }
 
 .status-item {
+  flex-grow: 1;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-around;
@@ -361,7 +365,6 @@ main {
   align-items: center;
   gap: 10px;
 }
-
 
 #detection-counter-box {
   display: flex;
@@ -384,14 +387,13 @@ main {
 }
 
 .ui-select {
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  cursor: pointer;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  transition: 0.3s;
   flex-grow: 1;
-  font-family: none;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
 }
 
 .start-btn {
@@ -399,7 +401,7 @@ main {
   outline: none;
   color: white;
   border: none;
-  padding: 5px 10px;
+  padding: 10px;
   border-radius: 5px;
   cursor: pointer;
   background-color: #45a049;
@@ -419,7 +421,7 @@ main {
   outline: none;
   color: white;
   border: none;
-  padding: 5px 10px;
+  padding: 10px;
   border-radius: 5px;
   cursor: pointer;
   background-color: #e53935;
@@ -430,7 +432,7 @@ main {
 .detection-item {
   font-size: 1rem;
   display: flex;
-  justify-content: space-evenly;
+  column-gap: 1rem;
   height: 100%;
   align-items: center;
   padding: 0 10px;
@@ -442,8 +444,10 @@ main {
   outline: none;
   border: 1px solid #ccc;
   border-radius: 3px;
-  height: 25px;
-  width: 30px;
+  width: 3.5rem;
+  padding: 10px;
+  text-align: center;
+  font-size: 1rem;
 }
 
 .dc-result label {
@@ -453,6 +457,7 @@ main {
 .dc-result {
   display: flex;
   column-gap: 0.4rem;
+  align-items: center;
 }
 
 /* Vision box */
@@ -529,8 +534,8 @@ main {
   background-color: white;
   border-radius: 50%;
   box-shadow: 2px 4px 4px 0px rgb(23 23 23);
-  width: 2rem;
-  height: 2rem;
+  width: 4rem;
+  height: 4rem;
 }
 
 .defect-in {
@@ -575,17 +580,446 @@ main {
 
 .stations {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 4fr 1fr;
   gap: 1rem;
-  margin: 0 auto;
-  width: 95%;
+  margin: 15px auto;
+  width: 98%;
   color: hsl(230, 12%, 40%);
-  padding: 15px 0;
-  margin-bottom: 2rem;
-  min-height: 74vh;
+  min-height: 70vh;
+  background-color: white;
+  flex-grow: 1;
 }
 
-.st-head {
+.stn-sections {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 1px 3px 12px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.current-report {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+}
+
+.overall-stat {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 1px 3px 12px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.error-stat {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 1px 3px 12px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.overall-stat .stats {
+  flex-grow: 1;
+  display: grid;
+  row-gap: 1rem;
+}
+
+.overall-stat>h3 {
+  margin-bottom: 10px;
+  margin-top: 0;
+  border-bottom: 2px solid hsl(230, 12%, 40%);
+  padding-bottom: 5px;
+  font-size: 1.2rem;
+}
+
+.error-stat>h3 {
+  margin-bottom: 10px;
+  margin-top: 0;
+  border-bottom: 2px solid hsl(230, 12%, 40%);
+  padding-bottom: 5px;
+  font-size: 1.2rem;
+}
+
+input.overall-in {
+  width: 2rem;
+}
+
+label.over-stat-label {
+  margin-bottom: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  display: inline-block;
+  min-width: fit-content;
+}
+
+.no-trays,
+.no-relays,
+.no-oks,
+.no-Noks,
+.no-totals {
+  display: flex;
+  align-items: center;
+}
+
+label.over-stat-label {
+  margin-bottom: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  display: inline-block;
+  min-width: 155px;
+  height: min-content;
+  text-align: left;
+}
+
+input.overall-in {
+  width: 6rem;
+  height: min-content;
+  /* border: none; */
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+  border-radius: 2px;
+  flex-grow: 1;
+  font-size: 1rem;
+}
+
+.tab {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+  box-shadow: 1px 3px 12px 5px rgba(0, 0, 0, 0.1);
+}
+
+button.tablinks.reveal-an:hover {
+  background-color: black;
+  color: white;
+}
+
+button.tablinks.reveal-an {
+  padding: 0.5rem 1rem;
+  background-color: white;
+  border: 0.5px solid hsl(230, 12%, 40%);
+  border-radius: 20px;
+  transition: all 0.5s;
+  cursor: pointer;
+  font-family: "Syne", sans-serif;
+  font-size: 1rem;
+}
+
+button.tablinks.reveal-an {
+  padding: 0.5rem 1rem;
+  background-color: white;
+  border: 0.5px solid hsl(230, 12%, 40%);
+  border-radius: 20px;
+  transition: all 0.5s;
+  cursor: pointer;
+  font-family: "Syne", sans-serif;
+  font-size: 1rem;
+}
+
+body>main>div.stations>div.stn-sections>div.tab>button>span {
+  font-family: none;
+}
+
+.tab button.active {
+  background-color: black;
+  color: white;
+}
+
+.tabcontent {
+  display: none;
+  padding: 15px;
+}
+
+.tabcontent.active {
+  display: block;
+}
+
+/* STN 1*/
+
+div#stn-1 {
+  flex-direction: column;
+  flex-grow: 1;
+  row-gap: 1rem;
+}
+
+.st1-row-1,
+.st1-row-2,
+.st1-row-3 {
+  display: flex;
+  column-gap: 1rem;
+}
+
+.stn1-pickup-drop-voltage,
+.stn1-pickup-drop-time {
+  display: flex;
+}
+
+.st1-tray-status>h3 {
+  margin-bottom: 10px;
+  margin-top: 0;
+  border-bottom: 2px solid hsl(230, 12%, 40%);
+  padding-bottom: 5px;
+  font-size: 1.2rem;
+  width: 125px;
+}
+
+.st1-tray-status,
+.st1-relay-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 1px 3px 12px 5px rgba(0, 0, 0, 0.1);
+  row-gap: 0.3rem;
+}
+
+.st1-tray-status-circle {
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 2px 4px 4px 0px rgb(23 23 23);
+  width: 7rem;
+  height: 7rem;
+}
+
+.st1-current-tray-status,
+.st1-current-relay-status {
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 1px 3px 12px 5px rgba(0, 0, 0, 0.1);
+}
+
+.st1-current-tray-status>h3 {
+  margin-bottom: 14px;
+  margin-top: 0;
+  border-bottom: 2px solid hsl(230, 12%, 40%);
+  padding-bottom: 5px;
+  font-size: 1.2rem;
+}
+
+label.st1-label {
+  margin-bottom: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.st1-current-tray-status {
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 1px 3px 12px 5px rgba(0, 0, 0, 0.1);
+}
+
+.st1-current-tray-status label {
+  width: 145px;
+}
+
+#stn-1 input {
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 13.3rem;
+  padding: 8px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.labels-inputs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+
+.stn1-pickup-drop-voltage,
+.stn1-pickup-drop-time {
+  display: flex;
+  flex-direction: column;
+}
+
+#voltage,
+#time {
+  display: flex;
+}
+
+.stn1-pickup-drop-voltage {
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 1px 3px 12px 5px rgba(0, 0, 0, 0.1);
+  flex-grow: 1;
+}
+
+.stn1-pickup-drop-voltage>h3 {
+  margin-bottom: 10px;
+  margin-top: 0;
+  padding-bottom: 5px;
+  font-size: 1.2rem;
+}
+
+#voltage,
+#time {
+  display: flex;
+  column-gap: 1rem;
+}
+
+#voltage .current-status,
+.ideal-status,
+.result {
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 1px 3px 12px 5px rgba(0, 0, 0, 0.1);
+}
+
+#voltage label {
+  width: 130px;
+}
+
+.current-status,
+.ideal-status {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+
+.current-status>h3 {
+  margin-top: 0;
+  border-bottom: 2px solid hsl(230, 12%, 40%);
+  padding-bottom: 5px;
+  font-size: 1rem;
+}
+
+.ideal-status>h3 {
+  margin-top: 0;
+  border-bottom: 2px solid hsl(230, 12%, 40%);
+  padding-bottom: 5px;
+  font-size: 1rem;
+}
+
+#voltage .pickup-drop-circle {
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 2px 4px 4px 0px rgb(23 23 23);
+  width: 4rem;
+  height: 4rem;
+}
+
+#voltage .result {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#voltage>div.result>div {
+  display: flex;
+  column-gap: 1rem;
+}
+
+#voltage .result>h3 {
+  margin-top: 0;
+  border-bottom: 2px solid hsl(230, 12%, 40%);
+  padding-bottom: 5px;
+  font-size: 1rem;
+}
+
+
+.st1-relay-status-circle {
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 2px 4px 4px 0px rgb(23 23 23);
+  width: 7rem;
+  height: 7rem;
+}
+
+
+
+.st1-relay-status>h3 {
+  margin-bottom: 10px;
+  margin-top: 0;
+  border-bottom: 2px solid hsl(230, 12%, 40%);
+  padding-bottom: 5px;
+  font-size: 1.2rem;
+  width: 125px;
+}
+
+.st1-current-relay-status>h3 {
+  margin-bottom: 14px;
+  margin-top: 0;
+  border-bottom: 2px solid hsl(230, 12%, 40%);
+  padding-bottom: 5px;
+  font-size: 1.2rem;
+}
+
+.st1-current-relay-status label {
+  width: 145px;
+}
+
+.stn1-pickup-drop-time {
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 1px 3px 12px 5px rgba(0, 0, 0, 0.1);
+  flex-grow: 1;
+}
+
+.stn1-pickup-drop-time>h3 {
+  margin-bottom: 10px;
+  margin-top: 0;
+  padding-bottom: 5px;
+  font-size: 1.2rem;
+}
+
+#time .current-status {
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 1px 3px 12px 5px rgba(0, 0, 0, 0.1);
+}
+
+#time label {
+  width: 130px;
+}
+
+#time .result>h3 {
+  margin-top: 0;
+  border-bottom: 2px solid hsl(230, 12%, 40%);
+  padding-bottom: 5px;
+  font-size: 1rem;
+}
+
+#time .result {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#time .pickup-drop-circle {
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 2px 4px 4px 0px rgb(23 23 23);
+  width: 4rem;
+  height: 4rem;
+}
+
+.st1-row-3 {
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 1px 3px 12px 5px rgba(0, 0, 0, 0.1);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.st1-row-3>h3 {
+  margin-bottom: 10px;
+  margin-top: 0;
+  border-bottom: 2px solid hsl(230, 12%, 40%);
+  padding-bottom: 5px;
+  font-size: 1.2rem;
+}
+
+/* .st-head {
   border-bottom: 2px solid hsl(230, 12%, 40%);
   padding-bottom: 5px;
   margin-bottom: 10px;
@@ -610,30 +1044,28 @@ main {
   border-bottom: 2px solid hsl(230, 12%, 40%);
   padding-bottom: 5px;
   font-size: 1.2rem;
-}
-
-
+} */
 
 /* Div dragger */
 
 /* For st1 */
 
-.st1-wrapper {
+/* .st1-wrapper {
   position: absolute;
-  width: calc(100% - 40px); /* Adds 20px space on left & right */
+  width: calc(100% - 40px);
   height: 70vh;
-  bottom: 20px; /* Adds 20px space from bottom */
+  bottom: 20px;
   left: 50%;
-  transform: translateX(-50%) scale(0.8); /* Center horizontally & scale */
+  transform: translateX(-50%) scale(0.8);
   background: #fff;
   border-radius: 10px;
   box-shadow: 1px 3px 12px 5px rgba(0, 0, 0, 0.1);
   opacity: 0;
   transition: transform 0.3s ease, opacity 0.3s ease;
   pointer-events: none;
-}
+} */
 
-.st1-wrapper.show {
+/* .st1-wrapper.show {
   opacity: 1;
   transform: translateX(-50%) scale(1);
   pointer-events: all;
@@ -666,27 +1098,26 @@ main {
   cursor: pointer;
   border-radius: 5px;
   color: hsl(230, 12%, 40%);
-}
-
+} */
 
 /* For st2 */
 
-.st2-wrapper {
+/* .st2-wrapper {
   position: absolute;
-  width: calc(100% - 40px); /* Adds 20px space on left & right */
+  width: calc(100% - 40px);
   height: 90vh;
-  bottom: 20px; /* Adds 20px space from bottom */
+  bottom: 20px;
   left: 50%;
-  transform: translateX(-50%) scale(0.8); /* Center horizontally & scale */
+  transform: translateX(-50%) scale(0.8);
   background: #fff;
   border-radius: 10px;
   box-shadow: 1px 3px 12px 5px rgba(0, 0, 0, 0.1);
   opacity: 0;
   transition: transform 0.3s ease, opacity 0.3s ease;
   pointer-events: none;
-}
+} */
 
-.st2-wrapper.show {
+/* .st2-wrapper.show {
   opacity: 1;
   transform: translateX(-50%) scale(1);
   pointer-events: all;
@@ -719,11 +1150,7 @@ main {
   cursor: pointer;
   border-radius: 5px;
   color: hsl(230, 12%, 40%);
-}
-
-
-
-
+} */
 
 @media screen and (max-width: 1124px) {
   nav.nav.container {

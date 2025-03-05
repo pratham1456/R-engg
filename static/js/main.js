@@ -20,7 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const header = wrapper?.querySelector(headerSelector);
     if (!wrapper || !header) return;
 
-    let offsetX = 0, offsetY = 0, isDragging = false;
+    let offsetX = 0,
+      offsetY = 0,
+      isDragging = false;
 
     header.addEventListener("mousedown", (e) => {
       isDragging = true;
@@ -64,4 +66,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setupToggle(".st1-wrapper", ".st1-open-btn", ".st1-close-btn");
   setupToggle(".st2-wrapper", ".st2-open-btn", ".st2-close-btn");
+});
+
+function openTab(evt, tabName) {
+  var i, tabcontent, tablinks;
+
+  // Hide all tab content sections
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+    tabcontent[i].classList.remove("active");
+  }
+
+  // Remove 'active' class from all tab buttons
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].classList.remove("active");
+  }
+
+  // Show the selected tab content
+  document.getElementById(tabName).style.display = "flex";
+  document.getElementById(tabName).classList.add("active");
+
+  // Add 'active' class to the clicked button
+  evt.currentTarget.classList.add("active");
+}
+
+// Automatically activate the first tab on page load
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelector(".tablinks").click();
 });
