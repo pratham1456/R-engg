@@ -390,10 +390,11 @@ div#status-box {
   flex-grow: 1;
   padding: 10px;
   font-size: 16px;
-  border: 2px solid #ccc;
+  border: none;
   border-radius: 5px;
   background-color: #fff;
   cursor: pointer;
+  box-shadow: 1px 3px 12px 5px rgba(0, 0, 0, 0.1);
 }
 
 .start-btn {
@@ -442,12 +443,13 @@ div#status-box {
 
 .detect-in {
   outline: none;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 3px;
   width: 3.5rem;
   padding: 10px;
   text-align: center;
   font-size: 1rem;
+  box-shadow: 1px 3px 12px 5px rgba(0, 0, 0, 0.1);
 }
 
 .dc-result label {
@@ -675,16 +677,17 @@ label.over-stat-label {
   text-align: left;
 }
 
+
 input.overall-in {
   width: 6rem;
   height: min-content;
-  /* border: none; */
-  border: 1px solid #ccc;
+  border: none;
   padding: 8px;
   text-align: center;
   border-radius: 2px;
   flex-grow: 1;
   font-size: 1rem;
+  box-shadow: 1px 3px 12px 5px rgba(0, 0, 0, 0.1);
 }
 
 .tab {
@@ -821,12 +824,13 @@ label.st1-label {
 
 #stn-1 input {
   outline: none;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 3px;
   width: 13.3rem;
   padding: 8px;
   text-align: center;
   font-size: 1rem;
+  box-shadow: 1px 3px 12px 5px rgba(0, 0, 0, 0.1);
 }
 
 .labels-inputs {
