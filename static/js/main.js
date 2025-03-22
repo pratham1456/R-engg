@@ -1,20 +1,20 @@
 function checkMachineStatus() {
-  fetch('/check_stm32')
-      .then(response => response.json())
-      .then(data => {
-          const statusElement = document.getElementById("machine-status");
-          if (data.status === "online") {
-              statusElement.innerHTML = "Online";
-              statusElement.style.color = "#45a049";
-          } else {
-              statusElement.innerHTML = "Offline";
-              statusElement.style.color = "#f44336";
-          }
-      })
-      .catch(error => {
-          console.log("Error checking machine status.");
-          console.log(error);
-      });
+  fetch('/check_machine_status')
+    .then(response => response.json())
+    .then(data => {
+      const statusElement = document.getElementById("machine-status");
+      if (data.status === "online") {
+        statusElement.innerHTML = "Online";
+        statusElement.style.color = "#45a049";
+      } else {
+        statusElement.innerHTML = "Offline";
+        statusElement.style.color = "#f44336";
+      }
+    })
+    .catch(error => {
+      console.log("Error checking machine status.");
+      console.log(error);
+    });
 }
 
 // Auto-check status when the page loads
