@@ -1,4 +1,20 @@
 function checkMachineStatus() {
+  fetch('/check_stm32')
+    .then(response => response.json())
+    .then(data => {
+      const statusElement = document.getElementById("machine-status");
+      if (data.status === "online") {
+        statusElement.innerHTML = "Online";
+        statusElement.style.color = "#45a049";
+      } else {
+        statusElement.innerHTML = "Offline";
+        statusElement.style.color = "#f44336";
+      }
+    })
+    .catch(error => {
+      console.log("Error checking machine status.");
+      console.log(error);
+    });
   fetch('/check_machine_status')
     .then(response => response.json())
     .then(data => {
@@ -24,6 +40,25 @@ window.onload = checkMachineStatus;
 setInterval(checkMachineStatus, 5000);
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Prevent --Select-- option from being selected
+  const relaySelect = document.getElementById("relay-type");
+  const startButton = document.querySelector(".start-btn");
+  const stopButton = document.querySelector(".stop-btn");
+
+  function showAlert(event) {
+    if (relaySelect.value === "select") {
+      event.preventDefault(); // Prevent button action
+      alert("Please select a valid Relay Type before proceeding!");
+    } else {
+      console.log(event.target.innerText + " button clicked!"); // Debugging log
+    }
+  }
+
+  // Add event listeners for button clicks
+  startButton.addEventListener("click", showAlert);
+  stopButton.addEventListener("click", showAlert);
+
+
   const bugsBtn = document.getElementById("bugs-btn");
   const bugsContainer = document.getElementById("bugs");
   const searchClose = document.getElementById("search-close");
